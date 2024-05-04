@@ -1,7 +1,7 @@
 name = "CFPlanets"
 uuid = "9c2ca15e-caec-41c0-a22c-2e93fe5a241f"
 authors = ["The ClimFlows contributors"]
-version = "1.0.0-DEV"
+version = "0.1.0"
 
 [compat]
 julia = "1.8"
