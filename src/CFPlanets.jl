@@ -17,7 +17,7 @@ abstract type ConformalPlanet end
     factor = scale_factor(planet::ConformalPlanet, x, y)     # logically Cartesian domain
 
 Returns the scale factor at a certain point on `planet``, given by its abstract coordinates.
-The scale factor is related to the physical length of a  horizontal displacement by:
+The scale factor is related to the physical length of a horizontal displacement by:
 
     δl = scale_factor * sqrt(δlat^2 + cos(lat)^2 δlon^2) # or
     δl = scale_factor * sqrt(δx^2 + δy^2).
@@ -59,6 +59,11 @@ end
     invrad = inv(planet.radius)
     return ulon*invrad, ulat*invrad
 end
+
+# oblate planets, refactoring needed
+
+include("julia/geopotential.jl")
+include("julia/hamiltonian.jl")
 
 #=========================== f-plane in a box ========================#
 
