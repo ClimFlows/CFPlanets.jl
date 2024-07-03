@@ -51,13 +51,14 @@ end
 
 @inline scale_factor(planet::ShallowTradPlanet, lon, lat) = planet.radius
 
-@inline coriolis_ST(a, Omega, lat) = 2*Omega*a*a*sin(lat)
+@inline coriolis_ST(a, Omega, lat) = 2 * Omega * a * a * sin(lat)
 
-@inline coriolis(planet::ShallowTradPlanet, lon, lat) = coriolis_ST.(planet.radius, planet.Omega, lat)
+@inline coriolis(planet::ShallowTradPlanet, lon, lat) =
+    coriolis_ST.(planet.radius, planet.Omega, lat)
 
 @inline function lonlat_from_cov(ulon, ulat, lon, lat, planet::ShallowTradPlanet)
     invrad = inv(planet.radius)
-    return ulon*invrad, ulat*invrad
+    return ulon * invrad, ulat * invrad
 end
 
 # oblate planets, refactoring needed
@@ -74,5 +75,12 @@ struct FPlanePlanet{F} <: ConformalPlanet
 end
 @inline scale_factor(planet::FPlanePlanet, x, y) = planet.dx
 @inline coriolis(planet::FPlanePlanet, x, y) = planet.f
+
+#========== for Julia <1.9 ==========#
+
+using PackageExtensionCompat
+function __init__()
+    @require_extensions
+end
 
 end # module
