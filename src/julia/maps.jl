@@ -73,7 +73,7 @@ end
 
 # metric factors
 
-jac(fwd, (lon,lat,R)) = jacobian(x->[a for a in fwd(x)], [lon, lat, R])
+function jac end # requires ForwardDiff, see CFPlanetsForwardDiffExt.jl
 
 function metric_factors(fwd, lon, lat, R)
     J = jac(fwd, (lon,lat,R))

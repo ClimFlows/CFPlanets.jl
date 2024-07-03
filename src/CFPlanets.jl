@@ -63,6 +63,7 @@ end
 # oblate planets, refactoring needed
 
 include("julia/geopotential.jl")
+include("julia/maps.jl")
 include("julia/hamiltonian.jl")
 
 #=========================== f-plane in a box ========================#

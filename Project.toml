@@ -3,11 +3,23 @@ uuid = "9c2ca15e-caec-41c0-a22c-2e93fe5a241f"
 authors = ["The ClimFlows contributors"]
 version = "0.1.1-DEV"
 
+[deps]
+PackageExtensionCompat = "65ce6f38-6b18-4e1d-a461-8949797d7930"
+
+[weakdeps]
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+
+[extensions]
+CFPlanetsForwardDiffExt = ["ForwardDiff"]
+
 [compat]
 julia = "1.8"
+ForwardDiff = "0.10"
+PackageExtensionCompat = "1"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
 
 [targets]
 test = ["Test"]

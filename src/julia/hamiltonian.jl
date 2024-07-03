@@ -8,6 +8,20 @@ abstract type Hamiltonian end
 function forward end # maps from curvilinear to Cartesian
 function backward end # maps from Cartesian to curvilinear
 
+function to_curvilinear(h::Hamiltonian, x, p)
+    fwd(x) = forward(h, x)
+    xi = backward(h, x)
+    J = transpose(jac(fwd, xi))
+    return xi, J * p
+end
+
+function to_cartesian(h::Hamiltonian, xi, m)
+    fwd(x) = forward(h, x)
+    x = fwd(xi)
+    J = transpose(jac(fwd, xi))
+    return x, J \ m
+end
+
 #===== Hamiltonian in Cartesian coordinates, in the rotating frame =====#
 
 # "planet" knows about geopotential Φ(x,y,z) and rotation rate Ω
