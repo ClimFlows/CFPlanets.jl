@@ -121,7 +121,7 @@ abstract type ConformalHamiltonian <: Hamiltonian end
     h₂, h³, R¹, Φ = conformal_factors(h::ConformalHamiltonian, ξ¹, ξ², ξ³)
 Return covariant horizontal scale factors h₂, contravariant vertical scale factor h³,
 contravariant planetary velocity and geopotential at point with coordinates (ξ¹, ξ², ξ³).
-See also [`scale_factors`](@ref)
+See also [`orthogonal_factors`](@ref)
 """
 function conformal_factors end
 
