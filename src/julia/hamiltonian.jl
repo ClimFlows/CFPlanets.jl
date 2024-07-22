@@ -44,7 +44,14 @@ backward(::CartesianHamiltonian, x) = x
 
 abstract type OrthogonalHamiltonian <: Hamiltonian end
 """
-    h₁, h₂, h³, R¹, Φ = orthognoal_factors(h::OrthogonalHamiltonian, ξ¹, ξ², ξ³)
+    h₁, h₂, h³, R¹, Φ = orthogonal_factors(h::OrthogonalHamiltonian, ξ¹, ξ², ξ³)
+
+Return covariant horizontal scale factors (h₁, h₂), contravariant vertical scale factor h³,
+contravariant planetary velocity and geopotential at point with coordinates (ξ¹, ξ², ξ³).
+NB: metric factors are the squares of scale factors:
+    g₁₁=(h₁)²
+    g₂₂=(h₂)²
+    g³³=(h³)²
 """
 function orthogonal_factors end
 
@@ -111,7 +118,10 @@ end
 
 abstract type ConformalHamiltonian <: Hamiltonian end
 """
-    h₂, h³, R¹, Φ = conformal_factors(h::OrthogonalHamiltonian, ξ¹, ξ², ξ³)
+    h₂, h³, R¹, Φ = conformal_factors(h::ConformalHamiltonian, ξ¹, ξ², ξ³)
+Return covariant horizontal scale factors h₂, contravariant vertical scale factor h³,
+contravariant planetary velocity and geopotential at point with coordinates (ξ¹, ξ², ξ³).
+See also [`scale_factors`](@ref)
 """
 function conformal_factors end
 
