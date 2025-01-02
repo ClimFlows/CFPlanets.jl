@@ -47,7 +47,10 @@ approximation. `radius` is the radius of the planet and `Omega` its rotation rat
 struct ShallowTradPlanet{F} <: ConformalPlanet
     radius::F
     Omega::F
+    gravity::F
 end
+# hydrostatic primitive equations do not define gravity
+ShallowTradPlanet(radius::F, Omega::F) where F = ShallowTradPlanet(radius, Omega, zero(F))
 
 @inline scale_factor(planet::ShallowTradPlanet, lon, lat) = planet.radius
 
