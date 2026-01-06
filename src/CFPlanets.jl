@@ -79,6 +79,11 @@ end
 @inline scale_factor(planet::FPlanePlanet, x, y) = planet.dx
 @inline coriolis(planet::FPlanePlanet, x, y) = planet.f
 
+#=========================== rectangular tanks ========================#
+
+include("julia/tank.jl")
+
+
 #========== for Julia <1.9 ==========#
 
 using PackageExtensionCompat

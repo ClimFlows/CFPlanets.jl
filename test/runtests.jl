@@ -2,7 +2,8 @@ using CFPlanets: WSW, CartesianHamiltonian, SGAHamiltonian,
     OrthogonalHamiltonian, ConformalHamiltonian,
     OblateHamiltonian_I, OblateHamiltonian_II, OblateHamiltonian_III,
     Earth, TD14, TD24, to_curvilinear, to_cartesian, forward,
-    metric_factors, orthogonal_factors, conformal_factors
+    metric_factors, orthogonal_factors, conformal_factors,
+    Tank2D, Tank3D
 
 using ForwardDiff: jacobian
 using StaticArrays
@@ -49,6 +50,9 @@ isconformal(fwd)
 fwd = TD24(planet)
 isconformal(fwd)
 
+L = 1.
+g = 10.
+
 @testset "CFPlanets.jl" begin
     # Write your tests here.
 
@@ -88,5 +92,11 @@ isconformal(fwd)
     end
 
     check_curvilinear(WSW(1.0, 1.0, 1e-5, 1e-5), 1.0)
+
+    tank2d = Tank2D(Lx = L, Lz = L, g = g)
+    tank3d = Tank3D(Lx = L, Ly = L, Lz = L, g = g)
+
+    @info "Tank2D" tank2d
+    @info "Tank3D" tank3d
 
 end
