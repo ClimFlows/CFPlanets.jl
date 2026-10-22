@@ -99,4 +99,10 @@ g = 10.
     @info "Tank2D" tank2d
     @info "Tank3D" tank3d
 
+    # the origin of the geopotential defaults to the bottom of the tank
+    @test tank2d.z0 == 0 && tank3d.z0 == 0
+    @test Tank2D(Lx = L, Lz = L, g = g, z0 = L).z0 == L
+    @test Tank3D(Lx = L, Ly = L, Lz = L, g = g, z0 = L).z0 == L
+    @test Tank2D{Float64}(L, L, g).z0 == 0
+
 end
